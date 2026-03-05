@@ -1,0 +1,12 @@
+{
+  "name": "moflow__lab",
+  "version": "1.0.0",
+  "description": "A Self-directed technical residency sile. Built with modular vanilla JavaScript (ES6 modules), GSAP, a 7-1 SCSS architecture, and a Gulp + webpack build pipeline. Every experiment is a deliberate stress-test - a constraint set, a performance target, and a rule against abstraction until it's earned.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
