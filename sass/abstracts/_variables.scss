@@ -1,0 +1,152 @@
+// ─────────────────────────────────────────────
+// ◈ MoFlow Lab — Design Tokens
+// abstracts/_variables.scss
+//
+// Zero CSS output. Variables and tokens only.
+// Consumed via the abstracts barrel (_index.scss):
+//   @use '../abstracts' as a;
+//   color: a.$color-accent;
+//
+// Rule: no token is accessed as a global.
+// Every reference is namespaced through 'a'.
+// ─────────────────────────────────────────────
+
+
+// ─────────────────────────────────────────────
+// Ember & Earth — Core Palette
+// ─────────────────────────────────────────────
+//
+// Built around thermal contrast.
+// Deep oxblood backgrounds absorb light;
+// burnt orange signals cut through it;
+// parchment text sits high-contrast without
+// the clinical coldness of pure white.
+
+// — Backgrounds (three elevation levels) ──────
+$color-bg:          #2C0E0E;              // Deep Oxblood — page background
+$color-bg-elevated: #3D1414;              // Raised surface — hover states, cards
+$color-bg-surface:  #4D1C1C;              // Highest surface — tooltips, active states
+
+// — Primary Accent ────────────────────────────
+$color-accent:      #FF7043;              // Burnt Orange — CTAs, cursor dot, hover highlight
+
+// — Text (three tiers) ────────────────────────
+$color-text:        #F4EBD0;              // Parchment — primary body text
+$color-text-muted:  #9E8A6E;              // Mid-tone ochre — metadata, labels, secondary text
+$color-text-dim:    #5C4A38;              // Near-invisible warm brown — index numbers, ghost text
+
+// — Structural ────────────────────────────────
+$color-border:      rgba(244, 235, 208, 0.08); // Parchment @ 8% opacity — hairline dividers
+
+
+// ─────────────────────────────────────────────
+// Signal Colours — Experiment Palette
+// ─────────────────────────────────────────────
+//
+// One signal colour per experiment in the R&D Index.
+// These are the only hues permitted beyond Ember & Earth.
+// Each hex is injected at runtime as --project-signal-rgb
+// by ProjectReveal.js; these SCSS tokens are the source of truth.
+
+$color-signal-01:   #FF7043;             // Burnt Orange  — EXP-01
+$color-signal-02:   #D4E157;             // Acid Lime     — EXP-02
+$color-signal-03:   #26C6DA;             // Steel Teal    — EXP-03
+$color-signal-04:   #EC407A;             // Electric Rose — EXP-04
+$color-signal-05:   #FFA726;             // Amber Gold    — EXP-05
+
+
+// ─────────────────────────────────────────────
+// Typography — Two Typefaces, Two Jobs
+// ─────────────────────────────────────────────
+//
+// Impact Layer  : Syne ExtraBold (800) — headings only, never below 2rem
+// Data Layer    : JetBrains Mono Light (300) — all system/metadata text
+
+$font-display:      'Syne', sans-serif;
+$font-mono:         'JetBrains Mono', monospace;
+
+// — Font Weights ──────────────────────────────
+$fw-display:        800;                  // Syne — hero, section titles, project titles
+$fw-mono:           300;                  // JetBrains Mono — all metadata/system text
+
+// — Type Scale: Impact Layer (fluid, via fluid-type mixin) ────
+//
+//   clamp(3rem,  12vw, 7.5rem)   → hero headline
+//   clamp(2rem,  5vw,  4rem)     → project titles (uppercase, -0.03em tracking)
+//   clamp(48px, fluid, 96px)     → section titles
+//
+//   Impact Layer is never used below 2rem. At small sizes, Syne 800 reads wrong.
+
+$type-hero:         clamp(3rem, 12vw, 7.5rem);
+$type-title:        clamp(2rem, 5vw, 4rem);
+$type-section:      clamp(3rem, 8vw, 6rem);
+
+// — Type Scale: Data Layer (fixed, unitless rem) ──────────────
+//
+//   The deliberate design decision is to keep system text small.
+//   Tiny mono against massive Syne creates the editorial brutalism
+//   contrast that defines the aesthetic. Do not increase these values.
+
+$type-label:        0.75rem;             // 12px — labels, nav, counter, footer
+$type-meta:         0.6875rem;           // 11px — index numbers, stat labels
+$type-tag:          0.625rem;            // 10px — category tags
+$type-badge:        0.5625rem;           // 9px  — stack badges (smallest readable tier)
+
+// — Letter-spacing ────────────────────────────
+$ls-display:        -0.04em;             // Impact Layer — hero (tight stacked-headline)
+$ls-title:          -0.03em;             // Impact Layer — project titles
+$ls-mono:           0.08em;              // Data Layer   — uppercase mono labels
+$ls-tag:            0.12em;              // Category tags — wide-spaced uppercase
+
+// — Line-height ───────────────────────────────
+$lh-display:        0.9;                 // Impact Layer — architectural density
+$lh-body:           1.6;                 // Body copy
+$lh-mono:           1.4;                 // Data Layer
+
+
+// ─────────────────────────────────────────────
+// Spacing & Layout
+// ─────────────────────────────────────────────
+
+$space-xs:          0.25rem;             //  4px
+$space-sm:          0.5rem;              //  8px
+$space-md:          1rem;                // 16px
+$space-lg:          2rem;                // 32px
+$space-xl:          4rem;                // 64px
+$space-2xl:         8rem;                // 128px
+
+// — Section padding (consumed by section-pad mixin) ──────────
+$section-pad-v:     clamp(4rem, 10vw, 8rem);
+$section-pad-h:     clamp(1.5rem, 5vw, 4rem);
+
+// — Work section grid columns ─────────────────
+//   64px | 1fr | auto
+//   Index numbers pinned left; titles fluid centre; links far right.
+$grid-work:         64px 1fr auto;
+
+
+// ─────────────────────────────────────────────
+// Motion & Animation
+// ─────────────────────────────────────────────
+
+// — Cursor lerp (CursorManager RAF loop) ──────
+$cursor-lerp:       0.12;                // 12% per frame — ~8-frame lag at 60fps
+
+// — Noise-Kernel animation durations ──────────
+//   Timed at LCM(2.4, 8) = 24s so all phase combinations
+//   occur within one window, making two CSS loops read as live.
+$noise-pulse-dur:   2.4s;               // kernelDotPulse — dot breathe cycle
+$noise-flicker-dur: 8s;                 // kernelFlicker  — label text flicker
+
+// — Standard easing ───────────────────────────
+$ease-out-expo:     cubic-bezier(0.16, 1, 0.3, 1);
+$ease-in-out-quad:  cubic-bezier(0.45, 0, 0.55, 1);
+
+
+// ─────────────────────────────────────────────
+// Z-index Scale (explicit, no magic numbers)
+// ─────────────────────────────────────────────
+
+$z-noise:           1;                   // .noise-canvas — above page, below everything else
+$z-project-follow:  10;                  // .project-follow-img — above work rows
+$z-cursor:          9999;                // .cursor — always topmost
