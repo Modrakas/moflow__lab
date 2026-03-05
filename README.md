@@ -52,7 +52,7 @@ Syne at `font-weight: 800` is aggressive at large sizes - the tight letter-spaci
 ```
 clamp(3rem, 12vw, 7.5rem)		- hero headline
 clamp(2rem, 5vw, 4rem)			- project titles (uppercase, -0.03em)
-clamp(48px, fluid, 96px)		-section titles
+clamp(3rem, 8vw, 6rem)		-section titles
 ```
 
 ### Data Layer - JetBrains Mono Light (300)
